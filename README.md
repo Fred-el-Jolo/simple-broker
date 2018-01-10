@@ -35,21 +35,20 @@ npm run docs
 
 
 ## Usage
-### Import
 Modify the `index.js` file to use the library.
 
 
-### API
+## API
 Check the generated doc in `doc/` folder.
 
 
-#### eventBus.on(action, handler)
+### eventBus.on(action, handler)
 This method register a new callback to the defined action.
 - Each call to this function adds a new callback to the stack.
 - There is currently no methods for resetting the callabck stack associated with an action.
 
 
-#### eventBus.emit(...actions, ...params)
+### eventBus.emit(...actions, ...params)
 This method trigger the callbacks associated with the actions passed as parameters.
 - Actions and params value are mixed
 - All actions must be defined before passing the parameters

@@ -7,12 +7,12 @@ Check the draw.io file simple-broker.xml
 
 ## Prerequisites
 - Install node latest (>=8.9.4) version (via [node.js](https://nodejs.org/) or [nvm](https://github.com/creationix/nvm))
-- The following dependencies, although being optional, should be installed to run the tests and generate the documentation:
-   - jest
-   - jsdoc
-   - envalid
-   - winston
-- To install dependencies, simply run `npm install` or `yarn install` in the project root directory.
+- The following dependencies must be installed:
+   - jest: testing tool
+   - jsdoc: documentation generation
+   - envalid: configuration management tool
+   - winston: logger
+- To install dependencies, simply run `npm install` or `yarn` in the project root directory.
 
 
 ## Project structure

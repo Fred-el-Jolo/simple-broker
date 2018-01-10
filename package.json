@@ -1,7 +1,10 @@
 {
   "name": "simple-broker-tmp",
   "version": "0.0.2",
+  "description": "Simple message broker library",
   "main": "index.js",
+  "repository": "git@github.com:Fred-el-Jolo/simple-broker.git",
+  "author": "Fred-el-Jolo <guillaume.frederic@gmail.com>",
   "license": "MIT",
   "scripts": {
     "test": "node_modules/.bin/jest",

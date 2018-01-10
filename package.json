@@ -7,6 +7,7 @@
   "author": "Fred-el-Jolo <guillaume.frederic@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "node index.js",
     "test": "node_modules/.bin/jest",
     "docs": "node_modules/.bin/jsdoc --private --verbose src/ --destination doc/"
   },

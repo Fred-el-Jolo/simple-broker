@@ -34,6 +34,12 @@ npm run docs
 ```
 
 
+## Running main file
+```sh
+npm start
+```
+
+
 ## Usage
 Modify the `index.js` file to use the library.
 

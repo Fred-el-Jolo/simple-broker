@@ -12,15 +12,15 @@ const logger = require('../vendor/logger/index');
 /**
  * @class EventBus
  */
-const EventBus = function () {
+class EventBus {
 
     /**
-     * Map object putting in relations actions (keys) and an array of
+     * Initialise map object putting in relations actions (keys) and an array of
      * callbacks (handlers)
-     * @private
-     * @type {Object}
      */
-    const handlers = {};
+    constructor() {
+        this.handlers = {};
+    }
 
     /**
      * Register a new callback to the defined action
@@ -29,14 +29,14 @@ const EventBus = function () {
      * @param  {function} handler The handler to register
      * @return {object}        Self-reference for object chaining
      */
-    function on(action, handler) {
+    on(action, handler) {
         logger.debug('EventBus.on function');
 
-        if (!handlers[action]) {
-            handlers[action] = [ handler ];
+        if (!this.handlers[action]) {
+            this.handlers[action] = [ handler ];
         }
         else {
-            handlers[action].push(handler);
+            this.handlers[action].push(handler);
         }
         return this;
     }
@@ -47,14 +47,14 @@ const EventBus = function () {
      * actions values must be positioned before the parameters ones.
      * @return {object}        Self-reference for object chaining
      */
-    function emit(...params) {
+    emit(...params) {
         logger.debug('EventBus.emit function');
 
-        const result = _splitEmitParams(params);
+        const result = this._splitEmitParams(params);
         if(result) {
             const [actions, args] = result;
             for (let action of actions) {
-                _emitSingleAction(action, ...args)
+                this._emitSingleAction(action, ...args)
             }
         }
         return this;
@@ -67,10 +67,10 @@ const EventBus = function () {
      * @param  {...string} params The params to pass to each callback
      * @return {object}           Self-reference for object chaining
      */
-    function _emitSingleAction(action, ...params) {
+    _emitSingleAction(action, ...params) {
         logger.debug('EventBus._emitSingleAction function');
 
-        let callbacks = handlers[action];
+        let callbacks = this.handlers[action];
 
         if (callbacks !== undefined) {
             callbacks.map((handler) => {
@@ -87,7 +87,7 @@ const EventBus = function () {
      * @param  {array} params Mixed actions and parameters values
      * @return {array} An array containing nested arrays actions and params
      */
-    function _splitEmitParams(params) {
+    _splitEmitParams(params) {
         logger.debug('EventBus._splitEmitParams function');
 
         const actions = [];
@@ -97,7 +97,7 @@ const EventBus = function () {
             // Iterate through first params while they are defined on the
             // handlers map object.
             // Assign them to an actions array
-            while(params.length && handlers[params[0]]) {
+            while(params.length && this.handlers[params[0]]) {
                 actions.push(params.shift());
             }
 
@@ -106,12 +106,6 @@ const EventBus = function () {
             return [actions, params];
         }
         return null;
-    }
-
-    // Module pattern, public API
-    return {
-        on:on,
-        emit: emit,
     }
 }
 

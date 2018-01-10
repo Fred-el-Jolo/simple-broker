@@ -1,6 +1,7 @@
 const EventBus = require('./src/event-bus');
 
 const eventBus = new EventBus();
+const eventBus2 = new EventBus();
 
 //----------------------------------
 eventBus.on('one', function() {
@@ -9,24 +10,24 @@ eventBus.on('one', function() {
 eventBus.emit('one');
 
 //-----------------------------------
-eventBus.on('two', function() {
+eventBus2.on('two', function() {
     console.log('two');
 });
-eventBus.emit('one');
+eventBus2.emit('one');
 eventBus.emit('two');
-eventBus.emit('three');
+eventBus2.emit('three');
 
 //-----------------------------------
 eventBus.on('echo', function(str) {
     console.log('echo:', str);
 });
-eventBus.emit('echo', 'hello world');
+eventBus2.emit('echo', 'hello world');
 
 //-----------------------------------
 eventBus.on('log', function() {
     console.log('log:', arguments);
 });
-eventBus.emit('log', 'hello', 'world', '!');
+eventBus2.emit('log', 'hello', 'world', '!');
 
 //-----------------------------------
-eventBus.emit('one', 'two', 'log','hello', 'world', '!');
+eventBus2.emit('one', 'two', 'log','hello', 'world', '!');

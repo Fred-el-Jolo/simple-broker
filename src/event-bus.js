@@ -10,6 +10,12 @@
 const logger = require('../vendor/logger/index');
 
 /**
+ * Singleton instance
+ * @private
+ */
+let instance;
+
+/**
  * @class EventBus
  */
 const EventBus = function () {
@@ -108,11 +114,16 @@ const EventBus = function () {
         return null;
     }
 
-    // Module pattern, public API
-    return {
-        on:on,
-        emit: emit,
-    }
+    // Module singleton pattern, public API
+    return (function(){
+        if (!instance) {
+            instance = {
+                on: on,
+                emit: emit,
+            }
+        }
+        return instance;
+    })();
 }
 
 module.exports = EventBus;

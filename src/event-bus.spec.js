@@ -119,3 +119,22 @@ test('EventBus should not expose internal functions or variables', () => {
     expect(broker._splitEmitParams).not.toBeDefined();
     expect(broker.handlers).not.toBeDefined();
 });
+
+test('EventBus is a singleton', () => {
+    const broker1 = new EventBus();
+    const broker2 = new EventBus();
+    const mockCallback1 = jest.fn();
+    const mockCallback2 = jest.fn();
+
+    broker1.on('action1', mockCallback1);
+    broker2.on('action2', mockCallback2);
+
+    broker1.emit('action2', 'param1');
+    broker2.emit('action1', 'param1');
+
+    expect(mockCallback1.mock.calls.length).toBe(1);
+    expect(mockCallback2.mock.calls.length).toBe(1);
+
+    expect(mockCallback1.mock.calls[0][0]).toBe('param1');
+    expect(mockCallback2.mock.calls[0][0]).toBe('param1');
+});

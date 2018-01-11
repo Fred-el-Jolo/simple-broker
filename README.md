@@ -44,8 +44,22 @@ npm start
 
 
 ## Usage
-Modify the `app.js` file to use the library.
+### Clone project and Modify the `app.js` file to directly use the library
 
+### Install via npm
+Install with `npm install fej-simple-broker` or `yarn add fej-simple-broker` commands
+
+Require the package and instantiate it : 
+```
+const EventBus = require('fej-simple-broker');
+
+const eventBus = new EventBus();
+
+eventBus.on('one', function() {
+    console.log('one');
+});
+eventBus.emit('one');   // 'one' in console
+```
 
 ## API
 Check the generated doc in `doc/` folder.

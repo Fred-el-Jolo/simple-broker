@@ -20,7 +20,8 @@ Check the draw.io file simple-broker.xml
 - doc: jsdoc generated documentation
 - src: source code & test files
 - vendor: external libraries
-- index.js: application main file
+- index.js: module file
+- app.js: application main file
 
 ## Running tests
 ```sh

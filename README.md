@@ -42,7 +42,7 @@ npm start
 
 
 ## Usage
-Modify the `index.js` file to use the library.
+Modify the `app.js` file to use the library.
 
 
 ## API

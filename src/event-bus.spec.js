@@ -11,7 +11,7 @@ test('EventBus contains "emit" function', () => {
     const broker = new EventBus();
 
     expect(broker.emit).toBeDefined();
-    expect(typeof broker.on).toBe('function');
+    expect(typeof broker.emit).toBe('function');
 });
 
 test('EventBus can subscribe and trigger a handler when an action is fired', () => {
